@@ -21,7 +21,11 @@ RUN mkdir -p /usr/share/maven /usr/share/maven/ref \
     | tar -xzC /usr/share/maven --strip-components=1 \
   && ln -s /usr/share/maven/bin/mvn /usr/bin/mvn
 
-VOLUME "$USER_HOME_DIR/.m2
+# Maven / Docker stuff...
+ADD settings.xml $USER_HOME_DIR/.m2/
+
+# DEMO not export volume
+#VOLUME "$USER_HOME_DIR/.m2
 
 # Standard SSH port
 EXPOSE 22
